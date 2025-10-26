@@ -34,7 +34,8 @@ Ejemplo: ${gptCommand.usage}
         error instanceof Error
           ? error.message
           : typeof error === "object" && error !== null && "message" in error
-          ? String((error as any).message)
+          ? // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            String((error as any).message)
           : "Error desconocido";
 
       throw new DangerError(errorMessage);

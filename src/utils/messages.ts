@@ -71,12 +71,38 @@ lee las reglas del grupo.
 `;
 
 export const demoteMessages = [
-  `{user} Tal como querias, se fue 
-ese ridiculo de {demoted} 😂`,
+  `😂 {demoted} perdió su corona...
+ahora es del montón otra vez.`,
 
-  `No hubo que acompa;ar a {user}
-el solito se fue 😢`,
+  `😏 {demoted} quiso mandar mucho
+y terminó sin rango.`,
+
+  `🤡 {demoted} bajó más rápido
+que el precio del dólar.`,
+
+  `🔥 {demoted} ya no tiene poder,
+pero sigue con el mismo ego.`,
+
+  `🙃 {demoted} fue degradado con estilo,
+bueno... con lo poco que le quedaba.`,
+
+  `😒 {demoted} se quedó sin admin
+y sin respeto también.`,
+
+  `🤭 {demoted} ya no es admin,
+ahora solo puede mirar y llorar.`,
+
+  `💀 {demoted} cayó del trono,
+y de paso se rompió el orgullo.`,
+
+  `😤 {demoted} perdió el poder,
+pero ganó experiencia en humillaciones.`,
+
+  `👋 {demoted} fue despedido como admin,
+sin carta, sin aviso, sin dignidad.`
 ];
+
+
 
 export const demoteMessage = `
 ⚠️ Atencion, al sujeto {user}
@@ -84,7 +110,71 @@ sele quito el cargo de admin
 que fracaso 🤐
 `;
 
-export const promoteMessage = `${BOT_EMOJI} Atencion, acaban de
-promover a admin a {user}.
-🤐 tengan cuidado.
-`
+// export const promoteMessage = `${BOT_EMOJI} Atencion, acaban de
+// promover a admin a {user}.
+// 🤐 tengan cuidado.
+// `
+
+export const promoteMessages = [
+  `👑 {user} subió de nivel...
+espero que no se le suba también el ego.`,
+
+  `🔥 {user} ahora es admin,
+pero sigue siendo el mismo desastre.`,
+
+  `😏 Felicidades {user},
+ahora puedes oprimir al pueblo.`,
+
+  `😂 {user} ascendió...
+aunque nadie sabe por qué.`,
+
+  `💼 {user} tiene poder,
+pero no sabe usar ni el WhatsApp.`,
+
+  `🚀 {user} ahora es admin,
+el grupo está oficialmente en peligro.`,
+
+  `🤡 {user} con poder... 
+¿qué podría salir mal?`,
+
+  `🙌 {user} fue promovido,
+ya se siente CEO del grupo.`,
+
+  `😎 {user} ahora manda,
+aunque nadie lo respete.`,
+
+  `💥 {user} acaba de obtener admin,
+prepárense para el caos.`
+];
+
+export const removeMessages = [
+  `👋 {removed} fue expulsado
+como si nunca hubiera existido.`,
+
+  `💨 {removed} salió volando del grupo,
+sin despedirse ni nada.`,
+
+  `😂 {removed} eliminado con estilo...
+bueno, con un toque de humillación.`,
+
+  `🚫 {removed} ya no forma parte del grupo,
+y nadie lo va a extrañar.`,
+
+  `🔥 {removed} fue removido del mapa,
+descansa en paz (del grupo).`,
+
+  `😈 {removed} fuera del grupo,
+una decisión sabia, por fin.`,
+
+  `🤭 {removed} expulsado sin anestesia,
+justicia poética.`,
+
+  `🧹 {removed} fue barrido del grupo,
+como la basura del lunes.`,
+
+  `😤 {removed} ya no está...
+y el grupo respira mejor.`,
+
+  `💀 {removed} fue eliminado,
+y el drama bajó un 80%.`
+];

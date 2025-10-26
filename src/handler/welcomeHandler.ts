@@ -8,7 +8,6 @@ import {
 } from "../utils/index.js";
 import { readdirSync } from "fs";
 import { IMAGE_DIR } from "../config.js";
-import path from "path";
 
 export const welcomeHandle = async (
   socket: WASocket,
@@ -17,7 +16,7 @@ export const welcomeHandle = async (
   user: GroupParticipant
 ) => {
   const message = formatMessage(welcomeMessage, {
-    user: user.name || `@${user.id.split("@")[0]}`,
+    user: user.name || `@${user.phoneNumber?.split("@")[0]}`,
     groupName: groupMetadata.subject,
     des: groupMetadata.desc?.toString() || "",
   });
@@ -28,7 +27,7 @@ export const welcomeHandle = async (
   try {
     userImgUrl = await socket.profilePictureUrl(user.id, "image");
   } catch (err) {
-    console.log("No tiene foto de perfil, se usará imagen random");
+    console.log("No tiene foto de perfil, se usará imagen random", err);
   }
 
   // Si no hay foto, elige una random de tu carpeta

@@ -7,6 +7,7 @@ const sample: ICommandModule = {
   commands: ["command1", "command2"],
   onlyGroup: false,
   usage: `${PREFIX}command`,
+  // eslint-disable-next-line no-empty-pattern
   handle: async ({}: ICommonFunctionsReturn) => {
     //cody
   },

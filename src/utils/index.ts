@@ -1,9 +1,7 @@
-/* eslint-disable no-undef */
+
 import readline from "readline";
 import {
   basePath,
-  COMMANDS_DIR,
-  DIST_COMMANDS,
   IMAGE_DIR,
   isDev,
   PREFIX,
@@ -188,6 +186,7 @@ export const findCommandImport = async (
     if (targetCommand) {
       typeReturn = type;
       targetCommandReturn = targetCommand;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onlyGroup = targetCommand.onlyGroup ?? false;
       break;
     }

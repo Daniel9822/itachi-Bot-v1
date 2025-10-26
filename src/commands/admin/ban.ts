@@ -2,12 +2,7 @@ import { BOT_NUMBER, PREFIX } from "../../config.js";
 import DangerError from "../../errors/dangerError.js";
 import InvalidParameterError from "../../errors/invalidParameterError.js";
 import { ICommonFunctionsReturn } from "../../interface/index.js";
-import {
-  fancyText,
-  isSameUser,
-  toUserJid,
-  toUserJidOrLid,
-} from "../../utils/index.js";
+import { isSameUser, toUserJid, toUserJidOrLid } from "../../utils/index.js";
 
 const banCommand = {
   name: "ban",
@@ -116,6 +111,7 @@ Ejemplo: ${banCommand.usage}`);
       // await sendSuccessReply("Usuario removido correctamente");
       await sendSuccessReact();
     } catch (error) {
+      console.log(error);
       throw new DangerError(
         "❌ No se pudo eliminar al usuario. Verifica que sigo siendo admin."
       );

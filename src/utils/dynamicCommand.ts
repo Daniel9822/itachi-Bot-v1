@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import InvalidParameterError from "../errors/invalidParameterError.js";
 import { hasTypeOrCommand, verifyPrefix } from "../middlewares/index.js";
 import { checkPermission } from "../middlewares/checkPermission.js";

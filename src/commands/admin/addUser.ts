@@ -19,8 +19,6 @@ const addUserGroup = {
     args,
     socket,
     remoteJid,
-    userJid,
-    sendWaitReact,
     sendWaitReply,
     sendSuccessReact,
     isReply,
@@ -59,6 +57,7 @@ debes usar el comando !add (numero)
       await socket.groupParticipantsUpdate(remoteJid, [member], "add");
       await sendSuccessReact();
     } catch (error) {
+      console.log(error)
       throw new DangerError(
         fancyText(`No se pudo agregar al grupo.
 revisa si el numero esta

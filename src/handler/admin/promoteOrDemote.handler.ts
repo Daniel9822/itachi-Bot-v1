@@ -1,7 +1,7 @@
 import DangerError from "../../errors/dangerError.js";
 import InvalidParameterError from "../../errors/invalidParameterError.js";
 import { ICommonFunctionsReturn } from "../../interface/index.js";
-import { fancyText, formatPhoneNumber, toUserJid, toUserJidOrLid } from "../../utils/index.js";
+import { fancyText, formatPhoneNumber, toUserJidOrLid } from "../../utils/index.js";
 
 type Props = {
   commonParams: ICommonFunctionsReturn;
@@ -15,7 +15,6 @@ export const promoteOrDemote = async ({ option, commonParams }: Props) => {
     sendSuccessReact,
     isReply,
     replyJid,
-    sendWaitReply,
     args,
   } = commonParams;
 
@@ -30,20 +29,18 @@ o enviar un numero
   }
 
   let memberToPromote: string | null = null;
-  console.log(args[0])
+
   if (isReply) {
     memberToPromote = replyJid;
   } else {
-    memberToPromote = toUserJidOrLid(args[0]);
+    memberToPromote =  toUserJidOrLid(formatPhoneNumber(args[0])!);
   }
-
-  console.log({ replyJid });
-  console.log({ memberToPromote });
 
   try {
     await socket.groupParticipantsUpdate(remoteJid, [memberToPromote!], option);
     await sendSuccessReact();
   } catch (error) {
+    console.log(error)
     throw new DangerError(fancyText("Algo salio mal"));
   }
 };
