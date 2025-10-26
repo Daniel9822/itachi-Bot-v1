@@ -1,10 +1,11 @@
 import { PREFIX } from "../config.js";
-import { ICommonFunctionsReturn } from "../interface/index.js";
+import { ICommandModule, ICommonFunctionsReturn } from "../interface/index.js";
 
-const sample = {
+const sample: ICommandModule = {
   name: "command",
   description: "Command description",
   commands: ["command1", "command2"],
+  onlyGroup: false,
   usage: `${PREFIX}command`,
   handle: async ({}: ICommonFunctionsReturn) => {
     //cody
