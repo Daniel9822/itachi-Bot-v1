@@ -13,7 +13,7 @@ export const handleMenu = async ({
   const randomFilePath = files[pickRandomIndex(files.length)];
 
   await sendSuccessReact();
-  await sendImageWithCaption(getImagePath(randomFilePath), menuMessage(), {
+  await sendImageWithCaption(getImagePath(IMAGE_DIR, randomFilePath), menuMessage(), {
     quoted: webMessage,
   });
 };

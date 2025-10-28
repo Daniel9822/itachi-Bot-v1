@@ -34,7 +34,7 @@ export const demoteHandler = async (
 
   await socket.sendMessage(remoteJid, {
     image: {
-      url: userImgUrl || getImagePath(randomFile),
+      url: userImgUrl || getImagePath(IMAGE_DIR, randomFile),
     },
     caption: fancyText(message),
     mentions: [userJid.id],

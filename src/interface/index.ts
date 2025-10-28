@@ -26,8 +26,10 @@ export interface ICommonFunctionsReturn {
   webMessage: WAMessage;
   commandWithPrefix: string | null;
 
+  isBotAdmin: (socket: WASocket, remoteJid: string) => Promise<boolean>
+
   // 📨 Funciones de envío
-  sendText: (text: string) => Promise<unknown>;
+  sendText: (text: string, mentions?: string[]) => Promise<unknown>;
   sendReply: (text: string) => Promise<unknown>;
   sendStickerFromFile: (file: string) => Promise<unknown>;
   sendImageFromFile: (file: string) => Promise<unknown>;
@@ -58,6 +60,7 @@ export interface ICommonFunctionsReturn {
   ) => Promise<unknown>;
   downloadVideo: (webMessage: WAMessage, filename: string) => Promise<unknown>;
   isGroup: boolean;
+  sendAudio: (socket: WASocket, remoteJid: string, userJid: string, input: string, fileName: string) => Promise<unknown>
 }
 
 export interface ICommandModule {

@@ -6,6 +6,7 @@ import {
   pickRandomIndex,
 } from "../utils/index.js";
 import { removeMessages } from "../utils/messages.js";
+import { IMAGE_DIR } from "../config.js";
 
 export const removeHandle = async (
   socket: WASocket,
@@ -30,7 +31,7 @@ export const removeHandle = async (
   try {
     await socket.sendMessage(remoteJid, {
       image: {
-        url: imgUrl || getImagePath("itachi.jpg"),
+        url: imgUrl || getImagePath(IMAGE_DIR, "itachi.jpg"),
       },
       caption: fancyText(message),
       // mentions: [randomUser?.id ?? ''],

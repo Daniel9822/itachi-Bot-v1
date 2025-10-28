@@ -1,3 +1,5 @@
+import { config } from "dotenv";
+config();
 import path from "path";
 import { fileURLToPath } from "url";
 
@@ -17,9 +19,11 @@ export const USE_LASTEST_VERSION = true;
 export const COMMANDS_DIR = path.resolve(__dirname, "commands");
 export const DIST_COMMANDS = path.resolve(__dirname, "..", "dist", "commands");
 export const IMAGE_DIR = path.resolve(__dirname, "..", "assets", "images");
+export const MUSIC_DIR = path.resolve(__dirname, "..", "assets", "music");
 
 export const TEMP_DIR = path.resolve(__dirname, "..", "assets", "temp");
-export const OPENAI_API_KEY = process.env.OPENAI_API_KEY
+export const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+export const YOUTUBE_API = process.env.YOUTUBE_API;
 
 export const isDev = true;
 export const basePath = isDev

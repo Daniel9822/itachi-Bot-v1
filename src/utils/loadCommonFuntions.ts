@@ -1,5 +1,5 @@
-import { baileysIs, dowload, extractDataMessage } from "./index.js";
-import { BOT_EMOJI } from "../config.js";
+import { baileysIs, dowload, extractDataMessage, toUserJid } from "./index.js";
+import { BOT_NUMBER } from "../config.js";
 import { readFileSync } from "fs";
 import { waitMessage } from "./messages.js";
 import { WAMessage, WASocket, MiscMessageGenerationOptions } from "baileys";
@@ -40,6 +40,20 @@ export const loadCommonFuntions = ({
   //   return user?.isAdmin;
   // };
 
+  const isBotAdmin = async (
+    socket: WASocket,
+    remoteJid: string
+  ): Promise<boolean> => {
+    const { participants } = await socket.groupMetadata(remoteJid);
+
+    const bot = participants.find(
+      (e) => e.phoneNumber === toUserJid(BOT_NUMBER)
+    );
+
+    console.log(bot)
+    return bot?.admin === 'admin';
+  };
+
   const isGroup = remoteJid?.split("@").pop() === "g.us";
 
   const downloadImage = async (
@@ -57,10 +71,32 @@ export const loadCommonFuntions = ({
     return await dowload(webMessage, filename, "video", "mp4");
   };
 
-  const sendText = async (text: string) => {
+  const sendAudio = async (
+    socket: WASocket,
+    remoteJid: string,
+    userJid: string,
+    input: string,
+    fileName: string
+  ) => {
+    await socket.sendMessage(remoteJid, {
+      audio: readFileSync(input), // o directamente audio: { url: input }
+      mimetype: "audio/mpeg",
+      fileName: fileName,
+      contextInfo: { mentionedJid: [userJid] }, // opcional, si quieres mencionar al usuario
+    });
+  };
+
+  const sendText = async (text: string, mentions?: string[]) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const optionalParams: any = {};
+
+    if (mentions?.length) {
+      optionalParams.mentions = mentions;
+    }
     if (!remoteJid) return;
     return await socket.sendMessage(remoteJid, {
-      text: `${BOT_EMOJI} ${text}`,
+      text: `${text}`,
+      ...optionalParams,
     });
   };
 
@@ -191,5 +227,7 @@ export const loadCommonFuntions = ({
     downloadSticker,
     downloadVideo,
     sendImageWithCaption,
+    sendAudio,
+    isBotAdmin
   };
 };

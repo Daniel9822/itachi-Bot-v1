@@ -2,7 +2,6 @@
 import readline from "readline";
 import {
   basePath,
-  IMAGE_DIR,
   isDev,
   PREFIX,
   TEMP_DIR,
@@ -179,7 +178,7 @@ export const findCommandImport = async (
 
     const targetCommand = commands?.find((cmd) =>
       cmd.commands
-        // .map((cmd) => formateCommand(cmd))
+        .map((cmd) => formateCommand(cmd))
         ?.includes(formateCommand(commandName))
     );
 
@@ -192,7 +191,7 @@ export const findCommandImport = async (
     }
   }
 
-  // console.log({ typeReturn, targetCommandReturn });
+  console.log({ typeReturn, targetCommandReturn });
   return {
     type: typeReturn,
     command: targetCommandReturn,
@@ -238,8 +237,8 @@ export const readMore = () => {
   return invisibleBreak;
 };
 
-export function getImagePath(filename) {
-  return path.join(IMAGE_DIR, filename);
+export function getImagePath(dir: string, filename: string) {
+  return path.join(dir, filename);
 }
 
 export function toUserJidOrLid(userArg: string) {
